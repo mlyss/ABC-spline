@@ -1,6 +1,6 @@
 library(DEoptim)
 
-
+#calculate pivot points from a column of some positive values 
 toCumulative <- function (numbersColumnAsFrame) {
   baseFrame <- data.frame(x=1, y=numbersColumnAsFrame[,1],row.names = rownames(numbersColumnAsFrame))
   baseFrame <- baseFrame[order(baseFrame$y, decreasing = T),]
@@ -122,7 +122,7 @@ test1<-optim(par = c(0.3,0.6,optimParam(2),optimParam(4),optimParam(4)), fn = sp
 
 
 # parameter limits have to be defined better
-# are obtained reliable?
+# is obtained result reliable?
 test2<-DEoptim(fn=function(x){splineESS(xABxBC_par1_par2_par3 = x,fun1_id = 2, fun2_id = 4, fun3_id = 4, cumData1 = cumData)},
                lower=c(0,0,-99,-99,-99,-99,-99,-99), upper=c(1,1,99,99,99,99,99,99),control = DEoptim.control(itermax=30) )
 
